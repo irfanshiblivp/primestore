@@ -577,13 +577,12 @@ function CustomerDashboardContent() {
                               />
                             </div>
                             <div>
-                              <label className="block text-slate-500 mb-1.5 font-semibold">Country</label>
+                              <label className="block text-slate-500 mb-1.5 font-semibold">Country (India delivery only)</label>
                               <input
                                 type="text"
-                                required
-                                value={newAddr.country}
-                                onChange={(e) => setNewAddr({ ...newAddr, country: e.target.value })}
-                                className="w-full px-3 py-2 border border-slate-200 rounded-lg bg-white"
+                                disabled
+                                value="India"
+                                className="w-full px-3 py-2 border border-slate-200 rounded-lg bg-slate-50 text-slate-400 cursor-not-allowed"
                               />
                             </div>
                           </div>

@@ -54,7 +54,7 @@ export const mockProducts: Product[] = [
     fileName: "saas-secrets-ebook.pdf",
     licenseType: "Personal Use Only"
   },
-  
+
   // Physical Products
   {
     id: "prod_phy_1",
@@ -113,10 +113,10 @@ export const mockFaqs = [
   },
   {
     q: "Do you ship physical products internationally?",
-    a: "Yes, we ship physical products worldwide. Delivery times range from 3-5 business days domestically and 7-14 business days internationally, depending on destination customs."
+    a: "No, we only deliver physical products within India. Domestic delivery times range from 3-7 business days depending on destination state and location."
   },
   {
     q: "Can I cancel or modify my physical order?",
-    a: "Orders can be modified or cancelled within 2 hours of payment by visiting your Customer Dashboard or emailing support@primestore.com. Once shipped, standard returns apply."
+    a: "Orders can be modified or cancelled within 2 hours of payment by visiting your Customer Dashboard or emailing rahoofmanu10@gmail.com. Once shipped, standard returns apply."
   }
 ];

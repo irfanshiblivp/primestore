@@ -59,6 +59,7 @@ export default function AdminDashboard() {
     type: "physical" as "physical" | "digital",
     category: "Accessories",
     imageUrl: "",
+    imageUrls: [""] as string[],
     stock: "10",
     fileName: "",
     fileUrl: "",
@@ -222,8 +223,20 @@ export default function AdminDashboard() {
         price: Number(productForm.price),
         type: productForm.type,
         category: productForm.category,
-        images: [productForm.imageUrl || "https://images.unsplash.com/photo-1587829741301-dc798b83add3"],
-        image: productForm.imageUrl || "https://images.unsplash.com/photo-1587829741301-dc798b83add3", // backward compatibility
+        images: (() => {
+          if (productForm.type === "physical") {
+            const clean = productForm.imageUrls.filter((url) => url.trim() !== "");
+            return clean.length > 0 ? clean : ["https://images.unsplash.com/photo-1587829741301-dc798b83add3"];
+          }
+          return [productForm.imageUrl || "https://images.unsplash.com/photo-1587829741301-dc798b83add3"];
+        })(),
+        image: (() => {
+          if (productForm.type === "physical") {
+            const clean = productForm.imageUrls.filter((url) => url.trim() !== "");
+            return clean[0] || "https://images.unsplash.com/photo-1587829741301-dc798b83add3";
+          }
+          return productForm.imageUrl || "https://images.unsplash.com/photo-1587829741301-dc798b83add3";
+        })(), // backward compatibility
         stock: productForm.type === "digital" ? 9999 : Number(productForm.stock),
         createdAt: editingProduct ? editingProduct.createdAt : Date.now(),
       };
@@ -267,6 +280,7 @@ export default function AdminDashboard() {
       type: product.type,
       category: product.category,
       imageUrl: product.images?.[0] || "",
+      imageUrls: product.images && product.images.length > 0 ? [...product.images] : [""],
       stock: String(product.stock),
       fileName: digitalInfo.fileName,
       fileUrl: digitalInfo.fileUrl,
@@ -485,6 +499,7 @@ export default function AdminDashboard() {
                     type: "physical",
                     category: "Accessories",
                     imageUrl: "",
+                    imageUrls: [""],
                     stock: "10",
                     fileName: "",
                     fileUrl: "",
@@ -922,16 +937,70 @@ export default function AdminDashboard() {
                 </div>
               </div>
 
-              <div>
-                <label className="block text-[9px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5">Image URL</label>
-                <input
-                  type="text"
-                  value={productForm.imageUrl}
-                  onChange={(e) => setProductForm({ ...productForm, imageUrl: e.target.value })}
-                  className="w-full px-3.5 py-2.5 border border-neutral-250 rounded-xl text-xs font-semibold focus:outline-none focus:border-neutral-450 bg-white text-neutral-850"
-                  placeholder="https://images.unsplash.com/... (optional)"
-                />
-              </div>
+              {productForm.type === "physical" ? (
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <label className="block text-[9px] font-bold text-neutral-400 uppercase tracking-widest">
+                      Product Images (URLs)
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setProductForm({
+                          ...productForm,
+                          imageUrls: [...productForm.imageUrls, ""],
+                        })
+                      }
+                      className="flex items-center gap-1 text-[9px] font-bold text-neutral-900 uppercase tracking-wider hover:text-neutral-600 transition-colors cursor-pointer"
+                    >
+                      <Plus className="h-3 w-3" />
+                      Add Photo
+                    </button>
+                  </div>
+                  
+                  <div className="space-y-2 max-h-40 overflow-y-auto pr-1">
+                    {productForm.imageUrls.map((url, index) => (
+                      <div key={index} className="flex gap-2 items-center">
+                        <input
+                          type="text"
+                          value={url}
+                          onChange={(e) => {
+                            const newUrls = [...productForm.imageUrls];
+                            newUrls[index] = e.target.value;
+                            setProductForm({ ...productForm, imageUrls: newUrls });
+                          }}
+                          className="flex-1 px-3.5 py-2.5 border border-neutral-250 rounded-xl text-xs font-semibold focus:outline-none focus:border-neutral-450 bg-white text-neutral-850"
+                          placeholder={`Image URL #${index + 1}`}
+                        />
+                        {productForm.imageUrls.length > 1 && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const newUrls = productForm.imageUrls.filter((_, i) => i !== index);
+                              setProductForm({ ...productForm, imageUrls: newUrls });
+                            }}
+                            className="p-2 border border-red-100 rounded-xl bg-red-50/30 text-red-500 hover:bg-red-50 transition-colors cursor-pointer"
+                            aria-label="Remove image URL"
+                          >
+                            <X className="h-3.5 w-3.5" />
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <label className="block text-[9px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5">Image URL</label>
+                  <input
+                    type="text"
+                    value={productForm.imageUrl}
+                    onChange={(e) => setProductForm({ ...productForm, imageUrl: e.target.value })}
+                    className="w-full px-3.5 py-2.5 border border-neutral-250 rounded-xl text-xs font-semibold focus:outline-none focus:border-neutral-450 bg-white text-neutral-850"
+                    placeholder="https://images.unsplash.com/... (optional)"
+                  />
+                </div>
+              )}
 
               {productForm.type === "digital" && (
                 <div className="border border-indigo-50 bg-indigo-50/20 p-4 rounded-2xl space-y-3">

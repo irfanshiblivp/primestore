@@ -169,7 +169,7 @@ export default function ProductDetailPage({ params }: PageProps) {
                   {product.type === "digital" ? "Digital File" : "Workspace Item"}
                 </span>
               </div>
- 
+
               {/* Image selectors list */}
               {images.length > 1 && (
                 <div className="flex gap-3">
@@ -177,11 +177,10 @@ export default function ProductDetailPage({ params }: PageProps) {
                     <button
                       key={i}
                       onClick={() => setSelectedImage(i)}
-                      className={`h-20 w-20 rounded-2xl overflow-hidden border-2 transition-all duration-200 cursor-pointer ${
-                        selectedImage === i
+                      className={`h-20 w-20 rounded-2xl overflow-hidden border-2 transition-all duration-200 cursor-pointer ${selectedImage === i
                           ? "border-neutral-900 shadow-premium"
                           : "border-neutral-100 hover:border-neutral-300"
-                      }`}
+                        }`}
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={img} alt={`${product.title} ${i + 1}`} className="h-full w-full object-cover" />
@@ -195,9 +194,8 @@ export default function ProductDetailPage({ params }: PageProps) {
             <div className="space-y-6">
               {/* Headers */}
               <div className="space-y-3">
-                <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest ${
-                  product.type === "digital" ? "text-secondary" : "text-accent"
-                }`}>
+                <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest ${product.type === "digital" ? "text-secondary" : "text-accent"
+                  }`}>
                   {product.type === "digital" ? <Download className="h-3.5 w-3.5" /> : <Package className="h-3.5 w-3.5" />}
                   {product.category}
                 </span>
@@ -249,7 +247,7 @@ export default function ProductDetailPage({ params }: PageProps) {
                       </div>
                       <div>
                         <h4 className="text-xs font-bold text-neutral-800">Direct Home Shipping</h4>
-                        <p className="text-[11px] font-semibold text-neutral-400 mt-0.5">Dispatched within 24 hours. Delivered across India in 3-5 days.</p>
+                        <p className="text-[11px] font-semibold text-neutral-400 mt-0.5">Delivered across India.</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3.5">
@@ -282,11 +280,10 @@ export default function ProductDetailPage({ params }: PageProps) {
                   </button>
                   <button
                     onClick={handleToggleWishlist}
-                    className={`rounded-xl border p-4 transition-all duration-200 cursor-pointer ${
-                      isLiked
+                    className={`rounded-xl border p-4 transition-all duration-200 cursor-pointer ${isLiked
                         ? "border-red-200 bg-red-50 text-red-500 hover:bg-red-100"
                         : "border-neutral-200 text-neutral-400 hover:bg-neutral-50 hover:text-red-550"
-                    }`}
+                      }`}
                   >
                     <Heart className={`h-5 w-5 ${isLiked ? "fill-red-500" : ""}`} />
                   </button>
@@ -308,11 +305,10 @@ export default function ProductDetailPage({ params }: PageProps) {
                   </button>
                   <button
                     onClick={handleToggleWishlist}
-                    className={`rounded-xl border p-4 transition-all duration-200 cursor-pointer ${
-                      isLiked
+                    className={`rounded-xl border p-4 transition-all duration-200 cursor-pointer ${isLiked
                         ? "border-red-200 bg-red-50 text-red-500 hover:bg-red-100"
                         : "border-neutral-200 text-neutral-400 hover:bg-neutral-50 hover:text-red-555"
-                    }`}
+                      }`}
                   >
                     <Heart className={`h-5 w-5 ${isLiked ? "fill-red-500" : ""}`} />
                   </button>

@@ -40,18 +40,18 @@ export default function ContactPage() {
 
         <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-3">
-            
+
             {/* Contact Details Card */}
             <div className="lg:col-span-1 space-y-6">
               <div className="border border-slate-100 rounded-2xl p-6 bg-slate-50/50 space-y-6">
                 <h3 className="font-bold text-slate-800 text-sm border-b border-slate-100 pb-3">Get in Touch</h3>
-                
+
                 <div className="flex items-start gap-4 text-xs text-slate-600">
                   <Mail className="h-5 w-5 text-primary shrink-0" />
                   <div>
                     <h4 className="font-bold text-slate-800">Support Email</h4>
-                    <p className="text-slate-400 mt-1">support@primestore.com</p>
-                    <p className="text-slate-400 mt-0.5 font-medium">Response within 2 hours</p>
+                    <p className="text-slate-400 mt-1">rahoofmanu10@gmail.com</p>
+                    <p className="text-slate-400 mt-0.5 font-medium">Response within 7 hours</p>
                   </div>
                 </div>
 
@@ -59,18 +59,18 @@ export default function ContactPage() {
                   <Phone className="h-5 w-5 text-primary shrink-0" />
                   <div>
                     <h4 className="font-bold text-slate-800">Call Center</h4>
-                    <p className="text-slate-400 mt-1">+91 (22) 4893-9201</p>
-                    <p className="text-slate-400 mt-0.5 font-medium">Mon - Sat, 9 AM - 6 PM IST</p>
+                    <p className="text-slate-400 mt-1">+91 9744184347</p>
+                    <p className="text-slate-400 mt-0.5 font-medium">8 AM - 9 PM</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4 text-xs text-slate-600">
                   <MapPin className="h-5 w-5 text-primary shrink-0" />
                   <div>
-                    <h4 className="font-bold text-slate-800">HQ Office</h4>
-                    <p className="text-slate-500 mt-1">Prime Store India Ltd,</p>
-                    <p className="text-slate-500">Maker Maxity, BKC, Mumbai,</p>
-                    <p className="text-slate-500">Maharashtra, 400051</p>
+                    <h4 className="font-bold text-slate-800">Address</h4>
+                    <p className="text-slate-500 mt-1">Prime Store,</p>
+                    <p className="text-slate-500">kondotty,malappuram,</p>
+                    <p className="text-slate-500">kerala, 673641</p>
                   </div>
                 </div>
               </div>
@@ -79,7 +79,7 @@ export default function ContactPage() {
             {/* Message form */}
             <div className="lg:col-span-2 border border-slate-100 rounded-2xl p-8 bg-white shadow-sm space-y-6">
               <h3 className="font-bold text-slate-800 text-sm">Send a Direct Message</h3>
-              
+
               <form onSubmit={handleSubmit} className="space-y-4 text-xs">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
